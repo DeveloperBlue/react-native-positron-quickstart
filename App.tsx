@@ -1,115 +1,101 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * 
+ * Sample React Native Web Electron App
+ * https://github.com/DeveloperBlue
  *
  * Generated with the TypeScript template
  * https://github.com/react-native-community/react-native-template-typescript
  *
- * @format
+ * Medium Project Writeup
+ * https://medium.com/@michaelrooplall
+ * 
  */
 
 import React from 'react';
 import {
+  Pressable,
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
+  Linking,
+  Platform
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import PlatformComponent from './src/PlatformComponent/PlatformComponent';
 
-const Section: React.FC<{
-  title: string;
-}> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
+const PressableLink = ({label, url} : {label : string, url : string}) => {
+
+  const handleURL = () => {
+    Linking.openURL(url);
+  }
+
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
+    <Pressable
+      onPress={handleURL}
+      style={{
+        minWidth : '50%',
+        borderRadius : 4,
+        borderWidth : 1,
+        borderColor : '#fff',
+        paddingHorizontal : 16,
+        paddingVertical : 8,
+        marginHorizontal : 2
+      }}
+    >
+      <Text style={[styles.text, {fontSize : 14, lineHeight : 14}]}>
+          {label}
       </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+    </Pressable>
+  )
+
+}
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+    <SafeAreaView style={styles.mainContainer} >
+      
+      <View style={styles.container}>
+        <Text style={[styles.text, {fontSize : 28}]}>
+          {`Welcome to React\u2011Native\u2011Web\u2011Electron`}
+        </Text>
+        <Text style={[styles.text, {fontSize : 16}]}>
+          By Michael Rooplall
+        </Text>
+        <Text style={[styles.text, {fontSize : 18, marginTop : 60}]}>
+          RNWE is a project made for building cross-platform applications on Android, iOS, Windows, MacOS, Linux, and the web — all from a single codebase.
+        </Text>
+        <View style={[styles.linkContainer, {marginTop : 60, marginBottom : 60}]}>
+          <PressableLink label={'Medium Writeup'} url={'https://medium.com/@michaelrooplall'}/>
+          <PressableLink label={'GitHub Repository'} url={'https://www.github.com/DeveloperBlue'}/>
         </View>
-      </ScrollView>
+        <PlatformComponent/>
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  mainContainer : {
+    flex : 1,
+    backgroundColor : '#ec444b',
+    alignItems : 'center',
+    justifyContent : 'center'
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  container : {
+    maxWidth : 800,
+    padding : 40,
+    alignItems : 'center',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  text : {
+    color : '#fff',
+    fontWeight : '300',
+    textAlign : 'center'
   },
-  highlight: {
-    fontWeight: '700',
-  },
+  linkContainer : {
+    flexDirection : 'row'
+  }
 });
 
 export default App;
