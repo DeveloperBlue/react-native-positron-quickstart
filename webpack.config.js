@@ -127,7 +127,7 @@ let options = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, isElectron ? './index.electron.html' : 'index.html'),
+      template: path.join(__dirname, isElectron ? './index.electron.html' : './index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
