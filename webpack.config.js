@@ -9,19 +9,21 @@ const argv = require('minimist')(process.argv.slice(2));
 const isElectron    = (argv && argv.target === 'electron-renderer');
 const isDevelopment = (argv && argv.mode === 'development');
 
+const project_bundle_name = require('./app.json').name;
+
 /********************************************************* */
 /* OUTPUT CONFIGURATION ********************************* */
 
-const PROJECT_BUNDLE_NAME = 'react-native-web-electron';
-
 const ELECTRON_OUTPUT = {
-    path: path.resolve(appDirectory, isDevelopment ? './electron-dev-live' : './electron'),
-    filename: `${PROJECT_BUNDLE_NAME}.bundle.js`,
+    path: path.resolve(appDirectory, isDevelopment ? './electron-app/webpack-dev-server' : './electron-app/build'),
+    publicPath : './',
+    filename: `${project_bundle_name}.bundle.js`
 }
 
 const WEB_OUTPUT = {
     path: path.resolve(appDirectory, './public'),
-    filename: `${PROJECT_BUNDLE_NAME}.bundle.js`,
+    publicPath : '/',
+    filename: `${project_bundle_name}.bundle.js`
 }
 
 /********************************************************* */
@@ -35,7 +37,12 @@ const PROJECT_ALIASES = {
 const COMPILE_NODEMODULES = [
   'react-native/Libraries',
   /*
-   *    Include all your React-Native web-compilable modules here
+   *    Include all your React-Native web-compilable modules here.
+   *
+   *    This is needed for webpack to compile JavaScript.
+   *    Many OSS React Native packages are not compiled to ES5 before being published.
+   *    If you depend on uncompiled packages they may cause webpack build errors. 
+   * 
   */
 ].map(moduleName => path.resolve(appDirectory, `node_modules/${moduleName}`));
 
@@ -48,6 +55,7 @@ const WEB_EXTENSIONS = ['.web.tsx', '.web.jsx', '.web.ts', '.web.js', ]
 
 /********************************************************* */
 /* WEBPACK MODULES ************************************** */
+
 
 const babelLoaderConfiguration = {
   test: /\.js$|tsx?$/,
@@ -90,9 +98,15 @@ const cssLoaderConfiguration = {
 
 let options = {
   entry: {
+    // load any web API polyfills
+    // path.resolve(appDirectory, 'polyfills-web.js'),
+    // your web-specific entry file
     app: path.join(__dirname, 'index.js'),
   },
+
+  // configures where the build ends up
   output: isElectron ? ELECTRON_OUTPUT : WEB_OUTPUT,
+
   resolve: {
     extensions: [...(isElectron ? ELECTRON_EXTENSIONS : WEB_EXTENSIONS), '.tsx', '.jsx', '.ts', '.js'],
     alias: {
@@ -100,6 +114,7 @@ let options = {
       ...PROJECT_ALIASES
     },
   },
+  target : (isElectron) ? 'electron-renderer' : 'web',
   module: {
     rules: [
       babelLoaderConfiguration,
@@ -107,9 +122,12 @@ let options = {
       cssLoaderConfiguration
     ],
   },
+  devServer : {
+    hot : true
+  },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'index.html'),
+      template: path.join(__dirname, isElectron ? './index.electron.html' : 'index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
@@ -120,12 +138,13 @@ let options = {
 };
 
 let electron_preload_options = {
-    entry: './electron-preload.js',
+    entry: './electron-app/electron-preload.js',
     target: 'electron-preload',
     output: {
         path: ELECTRON_OUTPUT.path,
-        filename: `${PROJECT_BUNDLE_NAME}-preload.bundle.js`
+        filename: `${project_bundle_name}-preload.bundle.js`
     }
+    
 };
 
 module.exports = isElectron ? [options, electron_preload_options] : options;
