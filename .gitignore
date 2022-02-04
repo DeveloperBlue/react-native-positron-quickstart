@@ -36,6 +36,10 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
+# electron webpack
+#
+electron-app/webpack-dev-server/
+
 # BUCK
 buck-out/
 \.buckd/
