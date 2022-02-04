@@ -22,12 +22,17 @@
     "template",
     "boilerplate"
   ],
+  "main": "electron-app/electron-main.js",
   "scripts": {
     "start": "react-native start",
     "run:android": "react-native run-android",
     "run:ios": "react-native run-ios",
     "run:web": "webpack serve --mode=development --config webpack.config.js --target web",
-    "run:electron": "",
+    "run:electron": "webpack --mode=development --config webpack.config.js --target electron-renderer && electron .\\electron-app\\electron-main.js --mode=development",
+    "build:android" : "",
+    "build:ios" : "", 
+    "build:web" : "", 
+    "build:electron" : "",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
@@ -58,7 +63,6 @@
     "metro-react-native-babel-preset": "^0.66.2",
     "minimist": "^1.2.5",
     "react-test-renderer": "17.0.2",
-    "sass-loader": "^12.4.0",
     "style-loader": "^3.3.1",
     "typescript": "^4.4.4",
     "url-loader": "^4.1.1",
