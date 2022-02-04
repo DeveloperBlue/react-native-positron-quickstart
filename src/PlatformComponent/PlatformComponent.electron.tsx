@@ -13,7 +13,7 @@ const PlatformComponent = () => {
     return (
         <View style={styles.platformComponent}>
             <Text style={styles.platformComponentText}>
-                This component was loaded for Electron builds!
+                This component was loaded for Electron!
             </Text>
         </View>
     )
