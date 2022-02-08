@@ -83,5 +83,8 @@
       "json",
       "node"
     ]
+  },
+  "moduleNameMapper" : {
+    "^react-native" : "react-native-web"
   }
 }
