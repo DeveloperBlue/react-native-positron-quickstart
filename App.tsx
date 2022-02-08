@@ -22,7 +22,7 @@ import {
   Platform
 } from 'react-native';
 
-import PlatformComponent from './src/PlatformComponent/PlatformComponent';
+import PlatformComponent from '@src/PlatformComponent/PlatformComponent';
 
 const PressableLink = ({label, url} : {label : string, url : string}) => {
 
