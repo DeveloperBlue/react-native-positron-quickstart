@@ -1,7 +1,7 @@
 /* eslint strict: 0 */
 'use strict';
 
-const { app, BrowserWindow, ipcMain} = require('electron');
+const { app, BrowserWindow, ipcMain, shell} = require('electron');
 
 const argv = require('minimist')(process.argv.slice(2));
 const path = require('path');
@@ -26,27 +26,21 @@ app.on('ready', () => {
     height: 900,
     backgroundColor : '#ec444b',
     webPreferences : {
-      preload: path.join(BUILD_PATH, `/${project_bundle_name}-preload.bundle.js`)
+      preload: path.join(BUILD_PATH, `${project_bundle_name}-preload.bundle.js`)
     }
   });
 
   mainWindow.webContents.openDevTools();
 
-  mainWindow.loadFile(path.join(BUILD_PATH, '/index.html'));
+  mainWindow.loadFile(path.join(BUILD_PATH, 'index.html'));
+
+  mainWindow.webContents.on('new-window', function(e, url) {
+    e.preventDefault();
+    shell.openExternal(url);
+  });
 
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
 
 })
-
-// Communicating with the preload/renderer processes
-
-ipcMain.on("toMain", (event, args) => {
-  fs.readFile("path/to/file", (error, data) => {
-      // Do something with file contents
-  
-      // Send result back to renderer process
-      win.webContents.send("fromMain", responseObj);
-  });
-});

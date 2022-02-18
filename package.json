@@ -1,27 +1,7 @@
 {
-  "name": "reactnativewebelectron",
+  "name": "reactnativepositron",
   "version": "0.0.1",
   "private": true,
-  "description": "Template of React-Native-Web with Electron for building cross-platform apps on Android, iOS, Windows, MacOS, Linux, and the web.",
-  "author": "Michael Rooplall <MichaelRooplall@gmail.com> (https://www.michaelrooplall.com/)",
-  "keywords": [
-    "react-native-web",
-    "react-native",
-    "react",
-    "electron",
-    "webpack",
-    "babel",
-    "typescript",
-    "android",
-    "ios",
-    "windows",
-    "macos",
-    "linux",
-    "web",
-    "cross-platform",
-    "template",
-    "boilerplate"
-  ],
   "main": "electron-app/electron-main.js",
   "scripts": {
     "start": "react-native start",
@@ -29,10 +9,10 @@
     "run:ios": "react-native run-ios",
     "run:web": "webpack serve --mode=development --config webpack.config.js --target web",
     "run:electron": "webpack --mode=development --config webpack.config.js --target electron-renderer && electron .\\electron-app\\electron-main.js --mode=development",
-    "build:android" : "",
-    "build:ios" : "", 
-    "build:web" : "", 
-    "build:electron" : "",
+    "build:android": "",
+    "build:ios": "",
+    "build:web": "",
+    "build:electron": "",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
@@ -46,7 +26,6 @@
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
-    "@svgr/webpack": "^6.2.1",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.66.15",
     "@types/react-test-renderer": "^17.0.1",
@@ -66,7 +45,7 @@
     "style-loader": "^3.3.1",
     "typescript": "^4.4.4",
     "url-loader": "^4.1.1",
-    "webpack": "^5.68.0",
+    "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4"
   },
@@ -82,9 +61,9 @@
       "jsx",
       "json",
       "node"
-    ]
-  },
-  "moduleNameMapper" : {
-    "^react-native" : "react-native-web"
+    ],
+    "moduleNameMapper" : {
+      "^react-native" : "react-native-web"
+    }
   }
 }

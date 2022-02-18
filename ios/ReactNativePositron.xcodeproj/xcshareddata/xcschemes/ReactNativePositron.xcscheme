@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "ReactNativeWebElectron.app"
-               BlueprintName = "ReactNativeWebElectron"
-               ReferencedContainer = "container:ReactNativeWebElectron.xcodeproj">
+               BuildableName = "ReactNativePositron.app"
+               BlueprintName = "ReactNativePositron"
+               ReferencedContainer = "container:ReactNativePositron.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "ReactNativeWebElectronTests.xctest"
-               BlueprintName = "ReactNativeWebElectronTests"
-               ReferencedContainer = "container:ReactNativeWebElectron.xcodeproj">
+               BuildableName = "ReactNativePositronTests.xctest"
+               BlueprintName = "ReactNativePositronTests"
+               ReferencedContainer = "container:ReactNativePositron.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ReactNativeWebElectron.app"
-            BlueprintName = "ReactNativeWebElectron"
-            ReferencedContainer = "container:ReactNativeWebElectron.xcodeproj">
+            BuildableName = "ReactNativePositron.app"
+            BlueprintName = "ReactNativePositron"
+            ReferencedContainer = "container:ReactNativePositron.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ReactNativeWebElectron.app"
-            BlueprintName = "ReactNativeWebElectron"
-            ReferencedContainer = "container:ReactNativeWebElectron.xcodeproj">
+            BuildableName = "ReactNativePositron.app"
+            BlueprintName = "ReactNativePositron"
+            ReferencedContainer = "container:ReactNativePositron.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
