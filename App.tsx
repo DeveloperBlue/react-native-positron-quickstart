@@ -19,7 +19,8 @@ import {
   Text,
   View,
   Linking,
-  Platform
+  Platform,
+  StatusBar
 } from 'react-native';
 
 import PlatformComponent from '@src/PlatformComponent/PlatformComponent';
@@ -54,8 +55,9 @@ const PressableLink = ({label, url} : {label : string, url : string}) => {
 const App = () => {
 
   return (
-    <SafeAreaView style={styles.mainContainer} >
-      
+    
+    <View style={styles.mainContainer} >
+      <StatusBar backgroundColor={'#e55555'} />
       <View style={styles.container}>
         <Text style={[styles.text, {fontSize : 28}]}>
           {`Welcome to React\u2011Native\u2011Positron`}
@@ -72,7 +74,7 @@ const App = () => {
         </View>
         <PlatformComponent/>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
