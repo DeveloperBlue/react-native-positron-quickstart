@@ -8,6 +8,8 @@
   <strong>Build native mobile applications, desktop applications, and web applications with React</strong>
 </p>
 
+![Snapshot of React Native Positron running in React Native, Electron, and the web](https://github.com/DeveloperBlue/react-native-positron-quickstart/blob/main/repository-banner.png)
+
 React-Native-Positron (RNP) is a project that bundles React Native, React-Native-Web, and Electron. It allows you to build cross-platform applications for Android, iOS, Windows, MacOS, Linux, and the web— all from one codebase.
 
 ## Build
