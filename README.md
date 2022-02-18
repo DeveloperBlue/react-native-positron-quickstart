@@ -1,8 +1,6 @@
 # React-Native-Positron Template
 React-Native-Positron (RNP) is a project that bundles React Native, React-Native-Web, and Electron. It allows you to build cross-platform applications for Android, iOS, Windows, MacOS, Linux, and the web— all from one codebase.
 
-🚧 This README is a work in progress 🚧
-
 ## Build
 To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. You will also need to ensure your [React Native development environment](https://medium.com/r/?url=https%3A%2F%2Freactnative.dev%2Fdocs%2Fenvironment-setup) is set up and that you have a working Android or iOS device or emulator on hand.
 
