@@ -69,8 +69,8 @@ const App = () => {
           React-Native-Positron is a project made for building cross-platform applications on Android, iOS, Windows, MacOS, Linux, and the web — all from a single codebase.
         </Text>
         <View style={[styles.linkContainer, {marginTop : 60, marginBottom : 60}]}>
-          <PressableLink label={'Medium Writeup'} url={'https://medium.com/@michaelrooplall'}/>
-          <PressableLink label={'GitHub Repository'} url={'https://www.github.com/DeveloperBlue'}/>
+          <PressableLink label={'Medium Writeup'} url={'https://medium.com/@michaelrooplall/building-cross-platform-applications-for-android-ios-windows-macos-linux-and-the-web-using-2586fdb2e3da'}/>
+          <PressableLink label={'GitHub Repository'} url={'https://github.com/DeveloperBlue/react-native-positron-quickstart'}/>
         </View>
         <PlatformComponent/>
       </View>
