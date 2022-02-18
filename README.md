@@ -49,6 +49,6 @@ npm run run:ios
 npm run run:electron
 ```
 ## Medium Project Writeup
-You can read more about how RNP works and build your own application by checking out my [Project Writeup on Medium]().
+You can read more about how RNP works and build your own application by checking out my [Project Writeup on Medium](https://medium.com/@michaelrooplall/building-cross-platform-applications-for-android-ios-windows-macos-linux-and-the-web-using-2586fdb2e3da).
 
 If you're interested in the state of the application without Redux, SVG support, and electron build tooling, please see the medium-snapshot branch.
