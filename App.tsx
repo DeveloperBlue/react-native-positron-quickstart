@@ -1,7 +1,7 @@
 /**
  * 
  * Sample React Native Web Electron App
- * https://github.com/DeveloperBlue
+ * https://github.com/DeveloperBlue/react-native-web-electron-quickstart
  *
  * Generated with the TypeScript template
  * https://github.com/react-native-community/react-native-template-typescript
