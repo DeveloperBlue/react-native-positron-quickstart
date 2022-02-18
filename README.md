@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://reactnative.dev/">
+  <a href="https://github.com/DeveloperBlue/react-native-positron-quickstart">
     React-Native-Positron Quickstart
   </a>
 </h1>
@@ -7,7 +7,6 @@
 <p align="center">
   <strong>Build native mobile applications, desktop applications, and web applications with React</strong>
 </p>
-<br>
 
 React-Native-Positron (RNP) is a project that bundles React Native, React-Native-Web, and Electron. It allows you to build cross-platform applications for Android, iOS, Windows, MacOS, Linux, and the web— all from one codebase.
 
