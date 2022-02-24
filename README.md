@@ -16,9 +16,9 @@ React-Native-Positron (RNP) is a project that bundles React Native, React-Native
 ------
 
 
-<p align="center">
+<h2 align="center">
   <strong>⚠️ You are on the Medium-Snapshot Branch ⚠️</strong>
-</p>
+</h2>
 
 
 This branch is a snapshot from the Project Writeup on Medium.
