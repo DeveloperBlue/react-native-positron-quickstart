@@ -9,7 +9,7 @@ const project_bundle_name = require('../app.json').name;
 
 const isDevelopment = (argv && argv.mode === 'development');
 
-const BUILD_PATH = path.join(__dirname, (isDevelopment) ? '/webpack-dev-server' : '/build');
+const BUILD_PATH = path.join(__dirname, (isDevelopment) ? '/__webpack-dev-server__' : '/build');
 
 /* */
 

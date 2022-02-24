@@ -15,7 +15,7 @@ const project_bundle_name = require('./app.json').name;
 /* OUTPUT CONFIGURATION ********************************* */
 
 const ELECTRON_OUTPUT = {
-    path: path.resolve(appDirectory, isDevelopment ? './electron-app/webpack-dev-server' : './electron-app/build'),
+    path: path.resolve(appDirectory, isDevelopment ? './electron-app/__webpack-dev-server__' : './electron-app/build'),
     publicPath : './',
     filename: `${project_bundle_name}.bundle.js`
 }
