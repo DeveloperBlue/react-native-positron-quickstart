@@ -1,7 +1,33 @@
 {
   "name": "reactnativepositron",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
+  "description": "Template of React-Native-Web with Electron for building cross-platform apps on Android, iOS, Windows, MacOS, Linux, and the web.",
+  "author" : {
+    "name" : "Michael Rooplall",
+    "email" : "MichaelRooplall@gmail.com",
+    "url" : "https://www.MichaelRooplall.com/"
+  },
+  "license" : "MIT",
+  "keywords": [
+    "react-native-positron",
+    "react-native-web",
+    "react-native",
+    "react",
+    "electron",
+    "webpack",
+    "babel",
+    "typescript",
+    "android",
+    "ios",
+    "windows",
+    "macos",
+    "linux",
+    "web",
+    "cross-platform",
+    "template",
+    "boilerplate"
+  ],
   "main": "electron-app/electron-main.js",
   "scripts": {
     "start": "react-native start",
