@@ -8,7 +8,7 @@
     "run:android": "react-native run-android",
     "run:ios": "react-native run-ios",
     "run:web": "webpack serve --mode=development --config webpack.config.js --target web",
-    "run:electron": "webpack --mode=development --config webpack.config.js --env use-target=electron && electron .\\electron-app\\electron-main.js --mode=development",
+    "run:electron": "webpack --mode=development --config webpack.config.js --env use-target=electron && electron . --mode=development",
     "build:android": "",
     "build:ios": "",
     "build:web": "",
