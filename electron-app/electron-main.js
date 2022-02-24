@@ -44,3 +44,8 @@ app.on('ready', () => {
   });
 
 })
+
+ipcMain.on("toMain", (event, arg) => {
+  console.log(`Received message '${arg}' from a renderer process`);  
+  event.sender.send('fromMain', 'Hello from the Electron main process!');
+})

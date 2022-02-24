@@ -8,7 +8,7 @@
     "run:android": "react-native run-android",
     "run:ios": "react-native run-ios",
     "run:web": "webpack serve --mode=development --config webpack.config.js --target web",
-    "run:electron": "webpack --mode=development --config webpack.config.js --target electron-renderer && electron .\\electron-app\\electron-main.js --mode=development",
+    "run:electron": "webpack --mode=development --config webpack.config.js --env use-target=electron && electron .\\electron-app\\electron-main.js --mode=development",
     "build:android": "",
     "build:ios": "",
     "build:web": "",
@@ -29,6 +29,7 @@
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.66.15",
     "@types/react-test-renderer": "^17.0.1",
+    "@types/webpack-env": "^1.16.3",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
     "babel-jest": "^26.6.3",
@@ -36,6 +37,7 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-react-native-web": "^0.17.5",
     "css-loader": "^6.6.0",
+    "electron": "^17.1.0",
     "eslint": "^7.14.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^26.6.3",
@@ -62,8 +64,8 @@
       "json",
       "node"
     ],
-    "moduleNameMapper" : {
-      "^react-native" : "react-native-web"
+    "moduleNameMapper": {
+      "^react-native": "react-native-web"
     }
   }
 }

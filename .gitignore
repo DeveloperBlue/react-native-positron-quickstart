@@ -38,7 +38,7 @@ yarn-error.log
 
 # electron webpack
 #
-electron-app/webpack-dev-server/
+electron-app/__webpack-dev-server__/
 
 # BUCK
 buck-out/

@@ -10,6 +10,18 @@ import {
 } from 'react-native';
 
 const PlatformComponent = () => {
+
+    /*
+        Communicating with the Electron main process, passed through the Electron preload
+    */
+   
+    if (window && 'api' in window){
+        window.api.receive('fromMain', (message : string) => {
+            console.log(`From Main Process: '${message}'`);
+        })
+        window.api.send("toMain", "hello");
+    }
+
     return (
         <View style={styles.platformComponent}>
             <Text style={styles.platformComponentText}>

@@ -6,7 +6,6 @@ const appDirectory = path.resolve(__dirname);
 const {presets} = require(`${appDirectory}/babel.config.js`);
 
 const argv = require('minimist')(process.argv.slice(2));
-const isElectron    = (argv && argv.target === 'electron-renderer');
 const isDevelopment = (argv && argv.mode === 'development');
 
 const project_bundle_name = require('./app.json').name;
@@ -58,7 +57,7 @@ const WEB_EXTENSIONS = ['.web.tsx', '.web.jsx', '.web.ts', '.web.js', ]
 
 
 const babelLoaderConfiguration = {
-  test: /\.js$|tsx?$/,
+  test: /\.jsx?$|tsx?$/,
   // Add every directory that needs to be compiled by Babel during the build.
   include: [
     path.resolve(__dirname, 'index.js'), // Entry to your application
@@ -96,55 +95,81 @@ const cssLoaderConfiguration = {
 /********************************************************* */
 /* WEBPACK CONFIGURATIONS ******************************* */
 
-let options = {
-  entry: {
-    // load any web API polyfills
-    // path.resolve(appDirectory, 'polyfills-web.js'),
-    // your web-specific entry file
-    app: path.join(__dirname, 'index.js'),
+let electron_preload_options = {
+  entry: './electron-app/electron-preload.ts',
+  target: 'electron-preload',
+  output: {
+      path: ELECTRON_OUTPUT.path,
+      filename: `${project_bundle_name}-preload.bundle.js`
   },
-
-  // configures where the build ends up
-  output: isElectron ? ELECTRON_OUTPUT : WEB_OUTPUT,
-
   resolve: {
-    extensions: [...(isElectron ? ELECTRON_EXTENSIONS : WEB_EXTENSIONS), '.tsx', '.jsx', '.ts', '.js'],
-    alias: {
-      'react-native$': 'react-native-web',
-      ...PROJECT_ALIASES
-    },
+    extensions: ['.ts', '.js']
   },
-  target : (isElectron) ? 'electron-renderer' : 'web',
   module: {
     rules: [
-      babelLoaderConfiguration,
-      imageLoaderConfiguration,
-      cssLoaderConfiguration
+      {
+        test: /\.js$|ts$/,
+        include: [
+          path.resolve(__dirname, './electron-app/electron-preload.ts'), // Entry to your application
+          /* You may need to include any files your electron-preload.ts file uses here as you continue to expand your preload script*/
+        ],
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-typescript"],
+          },
+        },
+      }
     ],
   },
-  devServer : {
-    hot : true
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, isElectron ? './index.electron.html' : './index.html'),
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      // See: https://github.com/necolas/react-native-web/issues/349
-      __DEV__: JSON.stringify(true),
-    }),
-  ]
 };
 
-let electron_preload_options = {
-    entry: './electron-app/electron-preload.js',
-    target: 'electron-preload',
-    output: {
-        path: ELECTRON_OUTPUT.path,
-        filename: `${project_bundle_name}-preload.bundle.js`
-    }
-    
-};
+module.exports = (env) => {
 
-module.exports = isElectron ? [options, electron_preload_options] : options;
+  const isElectron = env['use-target'] == "electron";
+
+  let options = {
+    entry: {
+      // load any web API polyfills
+      // path.resolve(appDirectory, 'polyfills-web.js'),
+      // your web-specific entry file
+      app: path.join(__dirname, 'index.js'),
+    },
+
+    // configures where the build ends up
+    output: isElectron ? ELECTRON_OUTPUT : WEB_OUTPUT,
+
+    resolve: {
+      extensions: [...(isElectron ? ELECTRON_EXTENSIONS : WEB_EXTENSIONS), '.tsx', '.jsx', '.ts', '.js'],
+      alias: {
+        'react-native$': 'react-native-web',
+        ...PROJECT_ALIASES
+      },
+    },
+    target : (isElectron) ? 'web' : 'web', // Spits out numerous 'require is not defined' issues when resolving Electron bundles to 'electron-renderer'. This may be intentional as per https://webpack.js.org/configuration/target/.
+    module: {
+      rules: [
+        babelLoaderConfiguration,
+        imageLoaderConfiguration,
+        cssLoaderConfiguration
+      ],
+    },
+    devServer : {
+      hot : true
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: path.join(__dirname, isElectron ? './index.electron.html' : './index.html'),
+      }),
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.DefinePlugin({
+        // See: https://github.com/necolas/react-native-web/issues/349
+        __DEV__: JSON.stringify(true),
+      }),
+    ]
+  };
+
+  return isElectron ? [options, electron_preload_options] : options;
+
+}
+
